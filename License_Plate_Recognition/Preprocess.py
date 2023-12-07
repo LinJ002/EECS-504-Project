@@ -1,5 +1,3 @@
-# Preprocess.py
-
 import cv2
 import numpy as np
 import math
@@ -24,7 +22,6 @@ def preprocess(imgOriginal):
     imgThresh = cv2.adaptiveThreshold(imgBlurred, 255.0, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY_INV, ADAPTIVE_THRESH_BLOCK_SIZE, ADAPTIVE_THRESH_WEIGHT)
 
     return imgGrayscale, imgThresh
-# end function
 
 ###################################################################################################
 def extractValue(imgOriginal):
@@ -37,7 +34,6 @@ def extractValue(imgOriginal):
     imgHue, imgSaturation, imgValue = cv2.split(imgHSV)
 
     return imgValue
-# end function
 
 ###################################################################################################
 def maximizeContrast(imgGrayscale):
@@ -56,7 +52,6 @@ def maximizeContrast(imgGrayscale):
     imgGrayscalePlusTopHatMinusBlackHat = cv2.subtract(imgGrayscalePlusTopHat, imgBlackHat)
 
     return imgGrayscalePlusTopHatMinusBlackHat
-# end function
 
 
 

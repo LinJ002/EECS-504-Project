@@ -79,7 +79,6 @@ def drawRedRectangleAroundPlate(imgOriginalScene, licPlate):
     cv2.line(imgOriginalScene, tuple(p1), tuple(p2), SCALAR_YELLOW, 2)
     cv2.line(imgOriginalScene, tuple(p2), tuple(p3), SCALAR_YELLOW, 2)
     cv2.line(imgOriginalScene, tuple(p3), tuple(p0), SCALAR_YELLOW, 2)
-# end function
 
 ###################################################################################################
 def writeLicensePlateCharsOnImage(imgOriginalScene, licPlate):
@@ -110,16 +109,15 @@ def writeLicensePlateCharsOnImage(imgOriginalScene, licPlate):
         ptCenterOfTextAreaY = int(round(intPlateCenterY)) + int(round(plateHeight * 1.6))      # write the chars in below the plate
     else:                                                                                       # else if the license plate is in the lower 1/4 of the image
         ptCenterOfTextAreaY = int(round(intPlateCenterY)) - int(round(plateHeight * 1.6))      # write the chars in above the plate
-    # end if
 
     textSizeWidth, textSizeHeight = textSize                # unpack text size width and height
 
     ptLowerLeftTextOriginX = int(ptCenterOfTextAreaX - (textSizeWidth / 2))           # calculate the lower left origin of the text area
     ptLowerLeftTextOriginY = int(ptCenterOfTextAreaY + (textSizeHeight / 2))          # based on the text area center, width, and height
 
-            # write the text on the image
+    
     cv2.putText(imgOriginalScene, licPlate.strChars, (ptLowerLeftTextOriginX, ptLowerLeftTextOriginY), intFontFace, fltFontScale, SCALAR_BLUE, intFontThickness)
-# end function
+
 
 def recognize_license_plate(img, filename):
 
@@ -151,7 +149,7 @@ def recognize_license_plate(img, filename):
 
         if len(licPlate.strChars) == 0:                     # if no chars were found in the plate
             print("\nno characters were detected\n\n")  # show message
-            return 'no chars'                                         # and exit program
+            return 'no chars'                                         
         
         drawRedRectangleAroundPlate(imgOriginalScene, licPlate)
         writeLicensePlateCharsOnImage(imgOriginalScene, licPlate)
